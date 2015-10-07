@@ -1,6 +1,6 @@
 @echo ===============================
-@echo Version 1.0.3 
-@echo Version Date: 2015_10_06_1023
+@echo Version 1.1.0_alpha 
+@echo Version Date: 2015_10_06_1834
 @echo Auther : Hydra Yu
 @echo ===============================
 @echo.
@@ -9,7 +9,7 @@
 ::@set /p des=Please Input Destination File Path (Ex : C:\xxx\xxx)
 
 @FOR /F "tokens=1-4 delims=/ " %%a IN ("%date%") DO @SET _MyDate=%%a%%b%%c
-@FOR /F "tokens=1-4 delims=:." %%a IN ("%time%") DO @SET _MyTime=%%a%%b%%c
+@FOR /F "tokens=1-4 delims=:." %%a IN ("%time%") DO @SET _MyTime=%%a:%%b:%%c
 
 @echo.
 @echo Destination File Path : %ad%\Image_%_MyDate%_%_MyTime%.iso
