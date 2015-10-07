@@ -1,6 +1,6 @@
 @echo ===============================
-@echo Version 1.1.0_alpha 
-@echo Version Date: 2015_10_06_1834
+@echo Version 1.1.0 
+@echo Version Date: 2015_10_07_1522
 @echo Auther : Hydra Yu
 @echo ===============================
 @echo.
@@ -9,14 +9,24 @@
 ::@set /p des=Please Input Destination File Path (Ex : C:\xxx\xxx)
 
 @FOR /F "tokens=1-4 delims=/ " %%a IN ("%date%") DO @SET _MyDate=%%a%%b%%c
-@FOR /F "tokens=1-4 delims=:." %%a IN ("%time%") DO @SET _MyTime=%%a:%%b:%%c
+@FOR /F "tokens=1-4 delims=:." %%a IN ("%time%") DO @SET _MyTime=%%a%%b%%c
+@FOR /F "tokens=1-4 delims=:." %%a IN ("%time%") DO @SET _MyTime1=%%a%%b
+
+@if NOT exist %ad%\Image_%_MyDate%_%_MyTime1% (
+ md %ad%\Image_%_MyDate%_%_MyTime1%
+ echo Make File... 
+) ELSE (
+	@echo File Exist...
+)
+
+@SET des=%ad%\Image_%_MyDate%_%_MyTime1%
 
 @echo.
-@echo Destination File Path : %ad%\Image_%_MyDate%_%_MyTime%.iso
+@echo Destination File Path : %des%\Image_%_MyDate%_%_MyTime%.iso
 @echo.
 @echo Start Building...
 
-@"C:\Program Files (x86)\Windows Embedded Standard 7\Tools\x86\oscdimg" -n -h -m -b"C:\Program Files (x86)\Windows Embedded Standard 7\Tools\PETools\x86\boot\etfsboot.com" %ad% %ad%\Image_%_MyDate%_%_MyTime%.iso
+@"C:\Program Files (x86)\Windows Embedded Standard 7\Tools\x86\oscdimg" -n -h -m -b"C:\Program Files (x86)\Windows Embedded Standard 7\Tools\PETools\x86\boot\etfsboot.com" %ad% %des%\Image_%_MyDate%_%_MyTime%.iso
 
 @echo Image Build Finish!!!
 @pause
