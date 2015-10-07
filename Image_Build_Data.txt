@@ -3,7 +3,16 @@
 ======================================================
 To Do List:
 
-
+	*待解決Win7 _Mydate 顯示問題 (%%a變為禮拜幾)
+	*新增 可自行輸入 File Name
+	 判斷，若無輸入 則File Name 為空值
+		Ex:
+			Input File Name : Hydra
+			File Name : Hydra_Image_"Date"_"Time(include Sec)
+			
+			Input File Name : 空值
+			File Name : Image_"Date"_"Time(include Sec)
+	*自動貼上已複製的來源位址(?)
 
 ======================================================
 
